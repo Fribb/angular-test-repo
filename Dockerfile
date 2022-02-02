@@ -24,6 +24,9 @@ RUN npm run build --prod
 ## use linuxserver alpine base image
 FROM lsiobase/alpine:amd64-3.15
 
+ENV PUID=1000
+ENV PGID=1000
+
 ## install npm
 RUN apk add --update npm
 
@@ -37,6 +40,8 @@ RUN npm ci --only=production
 
 ## From ‘builder’ copy published angular bundles in app/public
 COPY --from=builder /app/dist /app
+
+RUN chown -R ${PUID}:${PGID} /app
 
 ## expose port 3000
 EXPOSE 3000

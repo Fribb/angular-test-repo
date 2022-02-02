@@ -38,4 +38,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const fs = require('fs')
+
+const content = 'Some content!'
+
+fs.writeFile('public/test.txt', content, err => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  //file written successfully
+});
+
 module.exports = app;
