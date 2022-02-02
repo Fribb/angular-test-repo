@@ -24,6 +24,7 @@ RUN npm run build --prod
 ## use linuxserver alpine base image
 FROM lsiobase/alpine:amd64-3.15
 
+## set Environment variables
 ENV PUID=1000
 ENV PGID=1000
 
