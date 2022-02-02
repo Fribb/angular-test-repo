@@ -39,7 +39,7 @@ COPY ./backend /app
 ## install backend
 RUN npm ci --only=production
 
-## From ‘builder’ copy published angular bundles in app/public
+## From builder copy published angular bundles in app/public
 COPY --from=builder /app/dist /app
 
 RUN chown -R ${PUID}:${PGID} /app
